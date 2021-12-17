@@ -7,7 +7,6 @@ function HomePage() {
     return(
         <main className={css.container}>
             <Header/>
-            <h2>homepage</h2>
             <ListOfUsers />
         </main>
     )

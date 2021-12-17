@@ -1,8 +1,6 @@
 import css from './UserCard.module.css'
-import Icon from "./UI/Icon";
 
 function UserCard({name, age, email, password}){
-
 
     return(
         <div className={css.card}>
@@ -11,11 +9,11 @@ function UserCard({name, age, email, password}){
             <h2>Email: {email}</h2>
             <h2>Password: {password}</h2>
 
-            <div className={css.cardFooter}>
-                <Icon icon='fa-eye' yellow/>
-                <Icon icon='fa-pencil' green/>
-                <Icon icon='fa-times' red/>
-            </div>
+            {/*<div className={css.cardFooter}>*/}
+            {/*    <Icon icon='fa-eye' yellow/>*/}
+            {/*    <Icon icon='fa-pencil' green/>*/}
+            {/*    <Icon icon='fa-times' red/>*/}
+            {/*</div>*/}
 
         </div>
     )

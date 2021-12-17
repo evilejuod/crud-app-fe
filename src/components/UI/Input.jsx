@@ -8,9 +8,9 @@ function Input({id, type, name, placeholder, formik}){
             name={name}
             type={type}
             placeholder={placeholder}
-            // defaultValue={formik.values[`${name}`]}
-            // onChange={formik.handleChange}
-            // onBlur={formik.handleBlur}
+            defaultValue={formik.values[`${name}`]}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             className={css.input}
         />
 

@@ -2,6 +2,8 @@ import Input from "../UI/Input";
 import css from './UserForm.module.css'
 import { useFormik } from 'formik';
 import Button from "../UI/Button";
+import {toast} from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 
 const formField = [
     {
@@ -37,6 +39,7 @@ const formField = [
 ]
 
 function UserForm(){
+    const history = useHistory();
 
     const formik = useFormik({
         initialValues: {
@@ -51,17 +54,23 @@ function UserForm(){
         }
     });
 
-    const handleSubmit = async (values) => {
-        // const resp = await fetch('http://localhost:5000/', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-type': 'application/json',
-        //     },
-        //     body: JSON.stringify(values),
-        // });
-        // const data = await resp.json();
+    const handleSubmit = async (value) => {
+        const resp = await fetch('http://localhost:8000/users', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(value),
+        });
+        const data = await resp.json();
+        if (data) {
+            toast.success('success')
+            history.push('/')
+        }
 
-    }
+    };
+
+    console.log(formik.values)
 
     return(
         <form onSubmit={formik.handleSubmit} className={css.form} >
@@ -71,11 +80,12 @@ function UserForm(){
                     name={item.name}
                     type={item.type}
                     placeholder={item.placeholder}
+                    formik={formik}
                 />
             ))}
 
             <Button type='submit' >Pridėti</Button>
-            <Button type='submit' >Atšaukti</Button>
+            {/*<Button type='submit' >Atšaukti</Button>*/}
 
         </form>
     )

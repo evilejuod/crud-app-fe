@@ -1,10 +1,10 @@
 import css from './Icon.module.css'
 
-function Icon({ icon, red, green, white, className, onClick }){
+function Icon({ icon, red, green, className, onClick }){
     const iconColor = () => {
         if (red) return css.red;
         if (green) return css.green;
-        return css.yellow;
+        return css.grey;
     };
 
     return(

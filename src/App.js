@@ -2,12 +2,14 @@ import './App.css';
 import HomePage from "./pages/HomePage";
 import AddUserPage from "./pages/AddUserPage";
 import {Switch, Route} from "react-router-dom";
+import {Toaster} from "react-hot-toast";
 
 function App() {
   return (
     <div className="App">
+        <Toaster />
         <Switch>
-            <Route path='/edit/:id'>
+            <Route path='/edit'>
 
             </Route>
             <Route path='/add-user'>
