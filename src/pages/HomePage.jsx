@@ -1,5 +1,6 @@
 import css from './HomePage.module.css'
-import Header from "../components/Header";
+import Header from "../components/header/Header";
+import ListOfUsers from "../components/ListOfUsers";
 
 function HomePage() {
 
@@ -7,6 +8,7 @@ function HomePage() {
         <main className={css.container}>
             <Header/>
             <h2>homepage</h2>
+            <ListOfUsers />
         </main>
     )
 }

@@ -7,6 +7,9 @@ function App() {
   return (
     <div className="App">
         <Switch>
+            <Route path='/edit/:id'>
+
+            </Route>
             <Route path='/add-user'>
                 <AddUserPage/>
             </Route>

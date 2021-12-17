@@ -1,5 +1,5 @@
 import css from "./AddUserPgae.module.css";
-import UserForm from "../components/UserForm";
+import UserForm from "../components/form/UserForm";
 
 
 function AddUserPage(){

@@ -1,7 +1,7 @@
-import Input from "./UI/Input";
+import Input from "../UI/Input";
 import css from './UserForm.module.css'
 import { useFormik } from 'formik';
-import Button from "./UI/Button";
+import Button from "../UI/Button";
 
 const formField = [
     {
