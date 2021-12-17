@@ -8,25 +8,31 @@ const formField = [
         id: '1',
         name: 'name',
         type: 'text',
-        placeholder: 'Vartotojo vardas',
+        placeholder: 'Vardas',
     },
     {
         id: '2',
         name: 'age',
         type: 'number',
-        placeholder: 'Vartotojo amžius',
+        placeholder: 'Amžius',
     },
     {
-        id: '4',
+        id: '3',
         name: 'email',
         type: 'email',
-        placeholder: 'Vartotojo paštas',
+        placeholder: 'El. paštas',
     },
     {
         id: '4',
         name: 'password',
         type: 'password',
-        placeholder: 'Vartotojo slaptažodis',
+        placeholder: 'Slaptažodis',
+    },
+    {
+        id: '5',
+        name: 'repeatPassword',
+        type: 'text',
+        placeholder: 'Pakartoti slaptažodį',
     }
 ]
 
@@ -38,6 +44,7 @@ function UserForm(){
             age: 0,
             email: '',
             password: '',
+            repeatPassword: '',
         },
         onSubmit: (values) => {
             handleSubmit(values)
@@ -57,7 +64,7 @@ function UserForm(){
     }
 
     return(
-        <form onSubmit={formik.handleSubmit} className={css.form}>
+        <form onSubmit={formik.handleSubmit} className={css.form} >
             {formField.map(item =>(
                 <Input
                     key={item.id}
@@ -67,7 +74,8 @@ function UserForm(){
                 />
             ))}
 
-            <Button type='submit' >Pridėti vartotoją</Button>
+            <Button type='submit' >Pridėti</Button>
+            <Button type='submit' >Atšaukti</Button>
 
         </form>
     )
