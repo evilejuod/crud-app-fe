@@ -2,29 +2,21 @@ import {useState, useEffect} from "react";
 import {Link} from "react-router-dom";
 import Icon from "./UI/Icon";
 
-const url = 'http://localhost:8000'
-
 function ListOfUsers(){
 
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetchUsers()
+        fetchAllUsers();
     }, [setUsers]);
 
+    const fetchAllUsers = async () => {
 
-    const fetchUsers = async () => {
-        const response = await fetch(`${url}/users`);
-        const result = await response.json();
-        setUsers(result)
     }
 
-    const handleDelete = async (id) => {
-        // const response = await fetch(`${url}/users/${id}`, {method: 'DELETE'})
-        // const result = await response.json()
-        // .then((result) => {
-        //     setUsers(users.filter((user) => user.id !== id))
-        // })
+
+    const handleDelete = async () => {
+
 
     }
 
@@ -40,21 +32,31 @@ function ListOfUsers(){
                 </tr>
             </thead>
             <tbody>
-                {users.map(user => (
+                {users && users.map(user => (
                     <tr key={user.id}>
                         <td>{user.name}</td>
                         <td>{user.age}</td>
                         <td>{user.email}</td>
                         <td>{user.password}</td>
                         <td>
-                            <Link to={'/edit'}>
+                            <Link to={`/edit/${user.id}`}>
                                 <Icon icon='fa-pencil' green/>
                             </Link>
-                            <Icon icon='fa-times' red onClick={handleDelete}/>
-                            {/*<Icon icon='fa-eye' yellow/>*/}
+                            <Icon icon='fa-times' red onClick={() => { handleDelete() }}/>
+                            <Link to={`/user/${user.id}`}>
+                                <Icon icon='fa-eye' yellow/>
+                            </Link>
+
                         </td>
                     </tr>
                 ))}
+                {users && !users.length &&
+                    <tr>
+                        <td >
+                            <p >No Users To Display</p>
+                        </td>
+                    </tr>
+                }
             </tbody>
 
 

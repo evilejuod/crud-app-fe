@@ -30,12 +30,7 @@ const formField = [
         type: 'password',
         placeholder: 'Slaptažodis',
     },
-    {
-        id: '5',
-        name: 'repeatPassword',
-        type: 'text',
-        placeholder: 'Pakartoti slaptažodį',
-    }
+
 ]
 
 function UserForm(){
@@ -55,18 +50,7 @@ function UserForm(){
     });
 
     const handleSubmit = async (value) => {
-        const resp = await fetch('http://localhost:8000/users', {
-            method: 'POST',
-            headers: {
-                'Content-type': 'application/json',
-            },
-            body: JSON.stringify(value),
-        });
-        const data = await resp.json();
-        if (data) {
-            toast.success('success')
-            history.push('/')
-        }
+
 
     };
 
