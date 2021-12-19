@@ -4,7 +4,7 @@ function Icon({ icon, red, green, className, onClick }){
     const iconColor = () => {
         if (red) return css.red;
         if (green) return css.green;
-        return css.grey;
+        return css.orange;
     };
 
     return(

@@ -99,11 +99,14 @@ function UserForm() {
                     formik={formik}
                 />
             ))}
+            <div className={css.btnWrapper}>
+                <Button type='submit' >
+                    { id ? 'Atnaujinti' : 'Pridėti' }
+                </Button>
+                <Button type="reset" onClick={handleReset} inverted>Atšaukti</Button>
+            </div>
 
-            <Button type='submit' >
-                { id ? 'Atnaujinti' : 'Pridėti' }
-            </Button>
-            <Button type="reset" onClick={handleReset} >Atšaukti</Button>
+
 
         </form>
     )

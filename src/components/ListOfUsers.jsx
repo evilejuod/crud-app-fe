@@ -56,14 +56,13 @@ function ListOfUsers(){
                     <td>{user.email}</td>
                     <td>{user.password}</td>
                     <td className={css.actions}>
+                        <Link to={`/user/${user.id}`}>
+                            <Icon icon='fa-eye' yellow/>
+                        </Link>
                         <Link to={`/edit/${user.id}`}>
                             <Icon icon='fa-pencil' green/>
                         </Link>
                         <Icon icon='fa-times' red onClick={() => { handleDelete(user.id) }}/>
-                        <Link to={`/user/${user.id}`}>
-                            <Icon icon='fa-eye' yellow/>
-                        </Link>
-
                     </td>
                 </tr>
             ))}
