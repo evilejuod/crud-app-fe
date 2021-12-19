@@ -1,5 +1,5 @@
 
-# This is the full stack CRUD app 'Vartotojų kontrolė'
+# This is CRUD app 'Vartotojų kontrolė'
 
 A simple app to create, delete, update and read users.
 
