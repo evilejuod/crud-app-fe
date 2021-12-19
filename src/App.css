@@ -5,10 +5,11 @@
 }
 
 body{
-    font-family: 'Lato', sans-serif;
+    font-family: "JetBrains Mono", monospace, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
-    background-color: #F4F3EA;
+    background-color: #023047;
+    color: white;
 
 }
 .App{

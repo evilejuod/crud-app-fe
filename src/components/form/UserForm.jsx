@@ -3,7 +3,9 @@ import css from './UserForm.module.css'
 import { useFormik } from 'formik';
 import Button from "../UI/Button";
 import {toast} from "react-hot-toast";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import userService from "../../utils/userService";
+import { useEffect, useState } from "react";
 
 const formField = [
     {
@@ -29,35 +31,65 @@ const formField = [
         name: 'password',
         type: 'password',
         placeholder: 'Slaptažodis',
-    },
+    }
 
 ]
 
-function UserForm(){
+function UserForm() {
     const history = useHistory();
+    const { id } = useParams();
+
+    const [user, setUser] = useState({
+        name: '',
+        age: 0,
+        email: '',
+        password: '',
+    });
+
+    const fetchUser = async () => {
+        const user = await userService.getUserById(id);
+        setUser(user);
+    }
 
     const formik = useFormik({
-        initialValues: {
-            name: '',
-            age: 0,
-            email: '',
-            password: '',
-            repeatPassword: '',
-        },
+        enableReinitialize: true,
+        initialValues: user,
         onSubmit: (values) => {
-            handleSubmit(values)
+            handleSubmit(values);
+            handleReset();
         }
     });
 
-    const handleSubmit = async (value) => {
+    const handleSubmit = async (values) => {
+        let data;
+        if(id) {
+            data = await userService.updateUser(id, values);
+        } else {
+            data = await userService.createUser(values);
+        }
 
+        if (data) {
+            toast.success('vartotojas pridetas')
+            history.push('/')
+        }
 
     };
 
-    console.log(formik.values)
+    const handleReset = () => {
+        history.push('/')
+    }
+
+    useEffect(() => {
+        if(id) {
+            fetchUser();
+        }
+    }, [id]);
+
+    console.log({ id, user })
 
     return(
         <form onSubmit={formik.handleSubmit} className={css.form} >
+            {/*<h1>{ id ? 'Edit User' : 'Add User'}</h1>*/}
             {formField.map(item =>(
                 <Input
                     key={item.id}
@@ -68,8 +100,10 @@ function UserForm(){
                 />
             ))}
 
-            <Button type='submit' >Pridėti</Button>
-            {/*<Button type='submit' >Atšaukti</Button>*/}
+            <Button type='submit' >
+                { id ? 'Atnaujinti' : 'Pridėti' }
+            </Button>
+            <Button type="reset" onClick={handleReset} >Atšaukti</Button>
 
         </form>
     )
