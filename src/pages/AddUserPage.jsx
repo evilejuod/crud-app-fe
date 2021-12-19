@@ -6,7 +6,6 @@ function AddUserPage(){
 
     return (
         <main className={css.container}>
-            <h2>Pridėti naują vartotoją</h2>
             <UserForm />
         </main>
     )

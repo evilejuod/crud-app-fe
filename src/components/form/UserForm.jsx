@@ -89,7 +89,7 @@ function UserForm() {
 
     return(
         <form onSubmit={formik.handleSubmit} className={css.form} >
-            {/*<h1>{ id ? 'Edit User' : 'Add User'}</h1>*/}
+            <h1>{ id ? 'Pakoreguoti' : 'Naujas vartotojas'}</h1>
             {formField.map(item =>(
                 <Input
                     key={item.id}

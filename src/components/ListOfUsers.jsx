@@ -4,7 +4,6 @@ import Icon from "./UI/Icon";
 import {toast} from "react-hot-toast";
 import userService from '../utils/userService';
 import css from './ListOfUsers.module.css'
-import UserCard from "./UserCard";
 
 function ListOfUsers(){
 
