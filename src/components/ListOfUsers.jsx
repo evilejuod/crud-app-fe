@@ -15,7 +15,7 @@ function ListOfUsers(){
             setUsers(users);
         } catch (err) {
             console.log({ err })
-            //toast
+
         }
     }
 
@@ -28,13 +28,11 @@ function ListOfUsers(){
         try {
             await userService.deleteUser(id);
             const usersToUpdate = [...users];
-            const filteredUsers = usersToUpdate.filter(u => u.id !== id);
+            const filteredUsers = usersToUpdate.filter(item => item.id !== id);
             setUsers(filteredUsers);
-            toast.success('Vartotojas ištrintas')
+            toast.success('Vartotojas sėkmingai ištrintas')
         } catch (e) {
-            console.log({ e });
             toast.error('Vartotojo ištrinti nepavyko')
-            //toast
         }
 
     }
@@ -50,7 +48,7 @@ function ListOfUsers(){
                 <th>Veiksmai</th>
             </tr>
             </thead>
-            <tbody className={css.tbody}>
+            <tbody>
             {users && users.map(user => (
                 <tr key={user.id} >
                     <td>{user.name}</td>
@@ -70,8 +68,8 @@ function ListOfUsers(){
             ))}
             {users && !users.length &&
                 <tr>
-                    <td >
-                        <p >Nėra nei vieno vartotojo</p>
+                    <td>
+                        <p>Nėra nei vieno vartotojo</p>
                     </td>
                 </tr>
             }

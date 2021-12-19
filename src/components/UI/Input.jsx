@@ -1,17 +1,16 @@
 import css from './Input.module.css'
 
-function Input({id, type, name, placeholder, formik}){
+function Input({id, type, name, label, formik}){
 
     return (
         <>
             <label className={css.label}>
-                {placeholder}
+                {label}
             </label>
             <input
                 id={id}
                 name={name}
                 type={type}
-                // placeholder={placeholder}
                 defaultValue={formik.values[`${name}`]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}

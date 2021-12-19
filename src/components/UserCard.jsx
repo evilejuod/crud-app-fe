@@ -3,7 +3,6 @@ import Button from "./UI/Button";
 import userService from "../utils/userService";
 import {useEffect, useState} from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { toast } from "react-hot-toast";
 
 function UserCard(){
     const history = useHistory();
@@ -19,7 +18,7 @@ function UserCard(){
             setUser(fetcdUser);
         } catch (err) {
             console.log({ err })
-            // toast.error(err)
+            // toast.error({'error', err})
         }
         setIsLoading(false);
     }
@@ -44,16 +43,15 @@ function UserCard(){
         <div className={css.card}>
             <h1 className='title'>Vartotojo {user.id} duomenys</h1>
             <div className={css.wrapper}>
-                <p >Vartotojo vardas:</p>
+                <p >Vartotojo vardas</p>
                 <h3>{user.name}</h3>
-                <p>Vartotojo amžius:</p>
+                <p>Vartotojo amžius</p>
                 <h3>{user.age}</h3>
-                <p>Vartotojo el. paštas:</p>
+                <p>Vartotojo el. paštas</p>
                 <h3>{user.email}</h3>
-                <p>Vartotojo slaptažodis:</p>
+                <p>Vartotojo slaptažodis</p>
                 <h3>{user.password}</h3>
             </div>
-
 
             <Button type='button' onClick={handleGoBack} main>Grįžti atgal</Button>
         </div>

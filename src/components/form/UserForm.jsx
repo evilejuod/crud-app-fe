@@ -13,25 +13,25 @@ const formField = [
         id: '1',
         name: 'name',
         type: 'text',
-        placeholder: 'Vardas',
+        label: 'Vardas',
     },
     {
         id: '2',
         name: 'age',
         type: 'number',
-        placeholder: 'Amžius',
+        label: 'Amžius',
     },
     {
         id: '3',
         name: 'email',
         type: 'email',
-        placeholder: 'El. paštas',
+        label: 'El. paštas',
     },
     {
         id: '4',
         name: 'password',
         type: 'password',
-        placeholder: 'Slaptažodis',
+        label: 'Slaptažodis',
     }
 
 ]
@@ -57,7 +57,7 @@ function UserForm() {
         enableReinitialize: true,
         initialValues: user,
         validationSchema: Yup.object({
-            name: Yup.string().min(3).max(255).required(),
+            name: Yup.string().min(3).max(50).required(),
             age: Yup.number().positive().required(),
             email: Yup.string().email().required(),
             password: Yup.string().min(3),
@@ -105,7 +105,7 @@ function UserForm() {
                         key={item.id}
                         name={item.name}
                         type={item.type}
-                        placeholder={item.placeholder}
+                        label={item.label}
                         formik={formik}
                         errors={item.name}
                     />
