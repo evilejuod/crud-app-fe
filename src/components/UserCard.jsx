@@ -41,7 +41,7 @@ function UserCard(){
 
     return(
         <div className={css.card}>
-            <h1 className='title'>Vartotojo {user.id} duomenys</h1>
+            <h1 className='title'>Vartotojo duomenys</h1>
             <div className={css.wrapper}>
                 <p >Vartotojo vardas</p>
                 <h3>{user.name}</h3>
