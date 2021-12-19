@@ -17,6 +17,12 @@ function Input({id, type, name, placeholder, formik}){
                 onBlur={formik.handleBlur}
                 className={css.input}
             />
+            {
+                formik.touched[name] && formik.errors[name] &&
+                <span>
+                    {formik.errors[name]}
+                </span>
+            }
 
         </>
 

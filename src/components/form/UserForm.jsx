@@ -6,6 +6,7 @@ import {toast} from "react-hot-toast";
 import { useHistory, useParams } from "react-router-dom";
 import userService from "../../utils/userService";
 import { useEffect, useState } from "react";
+import * as Yup from "yup";
 
 const formField = [
     {
@@ -41,41 +42,52 @@ function UserForm() {
 
     const [user, setUser] = useState({
         name: '',
-        age: 0,
+        age: '',
         email: '',
         password: '',
     });
 
     const fetchUser = async () => {
-        const user = await userService.getUserById(id);
-        setUser(user);
+        const fetchedUser = await userService.getUserById(id);
+        fetchedUser.password = '';
+        setUser(fetchedUser);
     }
 
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: user,
+        validationSchema: Yup.object({
+            name: Yup.string().min(3).max(255).required(),
+            age: Yup.number().positive().required(),
+            email: Yup.string().email().required(),
+            password: Yup.string().min(3),
+        }),
         onSubmit: (values) => {
             handleSubmit(values);
-            handleReset();
+            handleGoBack();
         }
+
     });
 
     const handleSubmit = async (values) => {
-        let data;
-        if(id) {
-            data = await userService.updateUser(id, values);
-        } else {
-            data = await userService.createUser(values);
-        }
-
-        if (data) {
-            toast.success('vartotojas pridetas')
-            history.push('/')
+        try {
+            let message = '';
+            if(id) {
+                await userService.updateUser(id, values);
+                message = 'Vartotojo duomenys atnaujinti';
+            } else {
+                await userService.createUser(values);
+                message = 'Vartotojas sukurtas';
+            }
+            toast.success(message);
+        } catch (e) {
+            toast.error( 'Veiksmo atlikti nepavyko')
+            console.log(e)
         }
 
     };
 
-    const handleReset = () => {
+    const handleGoBack = () => {
         history.push('/')
     }
 
@@ -85,28 +97,25 @@ function UserForm() {
         }
     }, [id]);
 
-    console.log({ id, user })
-
     return(
         <form onSubmit={formik.handleSubmit} className={css.form} >
-            <h1>{ id ? 'Pakoreguoti' : 'Naujas vartotojas'}</h1>
+            <h1 className='title'>{ id ? 'Atnaujinti vartotojo duomenis' : 'Naujas vartotojas'}</h1>
             {formField.map(item =>(
-                <Input
-                    key={item.id}
-                    name={item.name}
-                    type={item.type}
-                    placeholder={item.placeholder}
-                    formik={formik}
-                />
+                    <Input
+                        key={item.id}
+                        name={item.name}
+                        type={item.type}
+                        placeholder={item.placeholder}
+                        formik={formik}
+                        errors={item.name}
+                    />
             ))}
             <div className={css.btnWrapper}>
                 <Button type='submit' >
                     { id ? 'Atnaujinti' : 'Pridėti' }
                 </Button>
-                <Button type="reset" onClick={handleReset} inverted>Atšaukti</Button>
+                <Button type="button" onClick={handleGoBack} inverted>Atšaukti</Button>
             </div>
-
-
 
         </form>
     )

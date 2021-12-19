@@ -1,9 +1,14 @@
 import css from './Button.module.css'
 
-function Button(props){
+function Button({ onClick, type, inverted, children }) {
 
     return(
-        <button type={props.type} className={props.inverted ? css.button : css.buttonMain}>{props.children}</button>
+        <button
+            onClick={onClick}
+            type={type}
+            className={inverted ? css.button : css.buttonMain}>
+            {children}
+        </button>
     )
 }
 export default Button;

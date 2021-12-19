@@ -1,12 +1,15 @@
 
 .red {
     color: red;
+    cursor: pointer;
 }
 
 .green {
     color: #15d30f;
+    cursor: pointer;
 }
 
 .orange {
     color: orange;
+    cursor: pointer;
 }

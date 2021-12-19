@@ -1,11 +1,10 @@
-import css from "./AddUserPgae.module.css";
 import UserForm from "../components/form/UserForm";
 
 
 function AddUserPage(){
 
     return (
-        <main className={css.container}>
+        <main className='container'>
             <UserForm />
         </main>
     )

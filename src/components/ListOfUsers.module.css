@@ -1,17 +1,22 @@
 
 .table{
+    /*border-bottom: 1px solid #FB8500;*/
+    font-family: "JetBrains Mono", monospace serif;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
-    font-family: sans-serif;
     min-width: 400px;
-    box-shadow: 0 0 20px rgb(5, 30, 40);
+    box-shadow: 0 0 15px 5px #02283a;
+    background: #023047;
+    color: #dcdcdc;
+    text-align: left;
+    width: 100%;
 }
 
 .table thead tr {
-
-    color: #ffffff;
+    color: #dcdcdc;
     text-align: left;
+    border-bottom: 1px solid #FB8500;
 }
 
 .table th,
@@ -20,19 +25,19 @@
 }
 
 .table tbody tr {
-    border-bottom: thin solid #dddddd;
+    border-bottom: 1px solid rgba(5, 30, 40, 0.45);
 }
 
-.table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
+/*.table tbody tr:nth-of-type(even) {*/
+/*    border-bottom: 2px solid #FB8500;*/
+/*}*/
 
 .table tbody tr:last-of-type {
 
 }
 .table tbody tr.active-row {
     font-weight: bold;
-    color: #1DA1F2;
+    color: #FB8500;
 }
 .actions{
     display: flex;

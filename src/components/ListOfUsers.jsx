@@ -30,8 +30,10 @@ function ListOfUsers(){
             const usersToUpdate = [...users];
             const filteredUsers = usersToUpdate.filter(u => u.id !== id);
             setUsers(filteredUsers);
+            toast.success('Vartotojas ištrintas')
         } catch (e) {
-            console.log({ e })
+            console.log({ e });
+            toast.error('Vartotojo ištrinti nepavyko')
             //toast
         }
 
@@ -62,14 +64,14 @@ function ListOfUsers(){
                         <Link to={`/edit/${user.id}`}>
                             <Icon icon='fa-pencil' green/>
                         </Link>
-                        <Icon icon='fa-times' red onClick={() => { handleDelete(user.id) }}/>
+                        <Icon icon='fa-times' red onClick={() => {handleDelete(user.id) }}/>
                     </td>
                 </tr>
             ))}
             {users && !users.length &&
                 <tr>
                     <td >
-                        <p >No Users To Display</p>
+                        <p >Nėra nei vieno vartotojo</p>
                     </td>
                 </tr>
             }
