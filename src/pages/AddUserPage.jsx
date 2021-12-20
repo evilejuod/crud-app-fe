@@ -4,9 +4,9 @@ import UserForm from "../components/form/UserForm";
 function AddUserPage(){
 
     return (
-        <main className='container'>
+        <div className='container'>
             <UserForm />
-        </main>
+        </div>
     )
 }
 export default AddUserPage;

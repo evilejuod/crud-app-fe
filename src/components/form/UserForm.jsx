@@ -8,7 +8,7 @@ import userService from "../../utils/userService";
 import { useEffect, useState } from "react";
 import * as Yup from "yup";
 
-const formField = [
+const formFieldAdd = [
     {
         id: '1',
         name: 'name',
@@ -41,7 +41,7 @@ const formField = [
     }
 
 ]
-const formFieldTwo = [
+const formFieldEdit = [
     {
         id: '1',
         name: 'name',
@@ -95,17 +95,16 @@ function UserForm() {
                 .max(50, 'Vartotojo vardą turi sudaryti ne daugiau, kaip 50 simbolių')
                 .required('Lauką būtina užpildyti'),
             age: Yup.number().positive('Turi būti teigiamas skaičius').required('Lauką būtina užpildyti'),
-            email: Yup.string().email('Neteisingas el. pašto adresas').required('Lauką būtina užpildyti'),
+            email: Yup.string().email('Turi turėti "@"').required('Lauką būtina užpildyti'),
             password: Yup.string()
                 .concat( !id ? Yup.string().required('Lauką būtina užpildyti') : null)
-                .min(6, 'Per trumpas vartotojo slaptažodis'),
+                .min(6, 'Slaptažodį turi sudaryti bent 6 simboliai'),
             repeatPassword: Yup.string()
                 .concat( !id ? Yup.string().required('Lauką būtina užpildyti') : null)
                 .oneOf([Yup.ref('password')], 'Slaptažodžiai turi sutapti'),
         }),
         onSubmit: (values) => {
             handleSubmit(values);
-            handleGoBack();
         }
 
     });
@@ -121,6 +120,7 @@ function UserForm() {
                 message = 'Vartotojas sukurtas';
             }
             toast.success(message);
+            handleGoBack();
         } catch (e) {
             toast.error( 'Veiksmo atlikti nepavyko')
             console.log(e)
@@ -141,18 +141,8 @@ function UserForm() {
     return(
         <form onSubmit={formik.handleSubmit} className={css.form} >
             <h1 className='title'>{ id ? 'Atnaujinti vartotojo duomenis' : 'Naujas vartotojas'}</h1>
-            {/*{formField.map(item =>(*/}
-            {/*        <Input*/}
-            {/*            key={item.id}*/}
-            {/*            name={item.name}*/}
-            {/*            type={item.type}*/}
-            {/*            label={item.label}*/}
-            {/*            formik={formik}*/}
-            {/*            errors={item.name}*/}
-            {/*        />*/}
-            {/*))}*/}
             {!id ?
-                formField.map(item => (
+                formFieldAdd.map(item => (
                     <Input
                         key={item.id}
                         name={item.name}
@@ -163,7 +153,7 @@ function UserForm() {
                     />
                 ))
              :
-                formFieldTwo.map(item => (
+                formFieldEdit.map(item => (
                     <Input
                         key={item.id}
                         name={item.name}

@@ -44,7 +44,6 @@ function ListOfUsers(){
                 <th>Vardas</th>
                 <th>Amžius</th>
                 <th>El. paštas</th>
-                {/*<th>Slaptažodis</th>*/}
                 <th>Veiksmai</th>
             </tr>
             </thead>
@@ -68,8 +67,8 @@ function ListOfUsers(){
             ))}
             {users && !users.length &&
                 <tr>
-                    <td>
-                        <p>Nėra nei vieno vartotojo</p>
+                    <td colSpan='4'>
+                        Nėra nei vieno vartotojo
                     </td>
                 </tr>
             }

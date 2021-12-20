@@ -4,9 +4,9 @@ import UserCard from "../components/UserCard";
 function SingleUser(){
 
     return (
-        <main className='container'>
+        <div className='container'>
             <UserCard/>
-        </main>
+        </div>
     )
 }
 export default SingleUser;
