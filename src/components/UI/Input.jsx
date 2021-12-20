@@ -19,7 +19,7 @@ function Input({id, type, name, label, formik}){
             />
             {
                 formik.touched[name] && formik.errors[name] &&
-                <span>
+                <span className={css.error}>
                     {formik.errors[name]}
                 </span>
             }
