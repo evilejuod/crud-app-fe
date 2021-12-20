@@ -57,10 +57,10 @@ function UserForm() {
         enableReinitialize: true,
         initialValues: user,
         validationSchema: Yup.object({
-            name: Yup.string().min(3).max(50).required(),
-            age: Yup.number().positive().required(),
-            email: Yup.string().email().required(),
-            password: Yup.string().min(3),
+            name: Yup.string().min(3, 'Per trumpas vartotojo vardas').max(50, 'Per ilgas vartotojo vardas').required('Lauką būtina užpildyti'),
+            age: Yup.number().positive('Turi būti teigiamas skaičius').required('Lauką būtina užpildyti'),
+            email: Yup.string().email('Neteisingas el. pašto adresas').required('Lauką būtina užpildyti'),
+            password: Yup.string().min(3, 'Per trumpas vartotojo slaptažodis'),
         }),
         onSubmit: (values) => {
             handleSubmit(values);

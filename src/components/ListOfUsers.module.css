@@ -31,9 +31,9 @@
 /*    border-bottom: 2px solid #FB8500;*/
 /*}*/
 
-.table tbody tr:last-of-type {
+/*.table tbody tr:last-of-type {*/
 
-}
+/*}*/
 .table tbody tr.active-row {
     font-weight: bold;
     color: #FB8500;

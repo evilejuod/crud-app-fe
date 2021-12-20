@@ -15,6 +15,7 @@ function Input({id, type, name, label, formik}){
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 className={css.input}
+                min={1}
             />
             {
                 formik.touched[name] && formik.errors[name] &&
