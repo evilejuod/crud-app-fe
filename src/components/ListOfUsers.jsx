@@ -53,7 +53,6 @@ function ListOfUsers(){
                     <td>{user.name}</td>
                     <td>{user.age}</td>
                     <td>{user.email}</td>
-                    {/*<td>{user.password}</td>*/}
                     <td className={css.actions}>
                         <Link to={`/user/${user.id}`}>
                             <Icon icon='fa-eye' yellow/>
